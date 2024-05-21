@@ -26,12 +26,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const savedTheme = cookies().get(COLOR_THEME_COOKIE_NAME);
-	const theme = savedTheme?.value || 'light';
+	const theme = savedTheme?.value || 'theme-light';
 
 	console.log(theme);
 
 	return (
-		<html lang='en' className={sansFont.variable} data-theme='light'>
+		<html lang='en' className={sansFont.variable}>
 			<body
 				className={`${theme} relative antialiased font-sans text-text bg-background min-h-screen overflow-hidden`}
 			>

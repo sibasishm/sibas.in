@@ -21,7 +21,7 @@ export const Navbar = ({ initialTheme }: NavbarProps) => {
 	const [theme, setTheme] = useState(initialTheme);
 
 	function handleToggleTheme() {
-		const newTheme = theme === 'light' ? 'dark' : 'light';
+		const newTheme = theme === 'theme-light' ? 'theme-dark' : 'theme-light';
 		setTheme(newTheme);
 
 		Cookie.set(COLOR_THEME_COOKIE_NAME, newTheme, {
