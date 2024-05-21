@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import { Work_Sans } from 'next/font/google';
 import { cookies } from 'next/headers';
 
-import {
-	BLOG_DESCRIPTION,
-	BLOG_TITLE,
-	COLOR_THEME_COOKIE_NAME,
-} from '@/constants/meta-data';
+import { BLOG_DESCRIPTION, BLOG_TITLE } from '@/constants/meta-data';
 
 import './styles.css';
 import Header from '@/components/header';
+import {
+	COLOR_THEME_COOKIE_NAME,
+	DARK_TOKENS,
+	LIGHT_TOKENS,
+} from '@/constants/theme';
 
 const sansFont = Work_Sans({
 	subsets: ['latin'],
@@ -33,7 +34,12 @@ export default function RootLayout({
 
 	console.log(theme);
 	return (
-		<html lang='en' className={sansFont.variable} data-theme={theme}>
+		<html
+			lang='en'
+			className={sansFont.variable}
+			data-color-theme={theme}
+			style={theme === 'light' ? LIGHT_TOKENS : DARK_TOKENS}
+		>
 			<body className='antialiased font-sans'>
 				<Header initialTheme={theme} />
 				{children}
