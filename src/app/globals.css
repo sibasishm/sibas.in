@@ -3,31 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--color-background: #fcfdfe;
+	--color-background-offset: #f7faf9;
+	--color-text: #1b2d45;
+	--color-text-offset: #373a3c;
+	--color-border: #cdd7e6;
+	--color-primary: #374ec7;
+	--color-primary-offset: #5671fe;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--color-background: #1a161a;
+		--color-background-offset: #302b30;
+		--color-text: #fefffe;
+		--color-text-offset: #bebebe;
+		--color-border: #413841;
+		--color-primary: #e78bf3;
+		--color-primary-offset: #dc66ec;
+	}
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.container {
+	@apply max-w-screen-xl w-11/12 mx-auto;
 }
