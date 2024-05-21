@@ -8,7 +8,7 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	daisyui: {
-		themes: ['emerald', 'dracula'],
+		themes: ['light', 'dark'],
 	},
 	theme: {
 		extend: {
