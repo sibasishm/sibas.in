@@ -22,6 +22,19 @@ const config: Config = {
 			maxWidth: {
 				'screen-2xl': '88rem',
 			},
+			typography: (theme: PluginAPI['theme']) => ({
+				DEFAULT: {
+					css: {
+						color: theme('colors.text-offset'),
+						'h1, h2, h3, blockquote, code, thead': {
+							color: theme('colors.text'),
+						},
+						'strong, a': {
+							color: theme('colors.primary-offset'),
+						},
+					},
+				},
+			}),
 		},
 		fontFamily: {
 			sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
@@ -35,19 +48,6 @@ const config: Config = {
 			primary: 'var(--color-primary)',
 			'primary-offset': 'var(--color-primary-offset)',
 		},
-		typography: (theme: PluginAPI['theme']) => ({
-			default: {
-				css: {
-					color: theme('colors.text-offset'),
-					'h1, h2, h3, blockquote, code, thead': {
-						color: theme('colors.text'),
-					},
-					'strong, a': {
-						color: theme('colors.primary-offset'),
-					},
-				},
-			},
-		}),
 	},
 	plugins: [require('@tailwindcss/typography')],
 };

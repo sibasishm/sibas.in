@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' className={sansFont.variable} suppressHydrationWarning>
-			<body className='relative antialiased font-sans text-text bg-background min-h-screen overflow-hidden'>
+			<body className='relative antialiased font-sans text-text bg-background min-h-screen'>
 				<ThemeProvider>
 					<Navbar />
 					{children}
