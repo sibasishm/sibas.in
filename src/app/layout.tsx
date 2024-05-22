@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { Work_Sans } from 'next/font/google';
-import { cookies } from 'next/headers';
+import { ThemeProvider } from 'next-themes';
 
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { COLOR_THEME_COOKIE_NAME } from '@/constants/theme';
 
 import './globals.css';
 
@@ -25,19 +24,14 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const savedTheme = cookies().get(COLOR_THEME_COOKIE_NAME);
-	const theme = savedTheme?.value || 'theme-light';
-
-	console.log(theme);
-
 	return (
-		<html lang='en' className={sansFont.variable}>
-			<body
-				className={`${theme} relative antialiased font-sans text-text bg-background min-h-screen overflow-hidden`}
-			>
-				<Navbar initialTheme={theme} />
-				{children}
-				<Footer />
+		<html lang='en' className={sansFont.variable} suppressHydrationWarning>
+			<body className='relative antialiased font-sans text-text bg-background min-h-screen overflow-hidden'>
+				<ThemeProvider>
+					<Navbar />
+					{children}
+					<Footer />
+				</ThemeProvider>
 			</body>
 		</html>
 	);

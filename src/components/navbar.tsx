@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Cookie from 'js-cookie';
+import { useTheme } from 'next-themes';
 
 import { LINKS } from '@/constants/links';
 
@@ -10,23 +10,16 @@ import { Logo } from '@/components/logo';
 import SVGProvider from '@/components/svg-provider';
 import { COLOR_THEME_COOKIE_NAME } from '@/constants/theme';
 
-type NavbarProps = {
-	initialTheme: string;
-};
-
-export const Navbar = ({ initialTheme }: NavbarProps) => {
+export const Navbar = () => {
+	const [mounted, setMounted] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isTop, setIsTop] = useState(true);
 
-	const [theme, setTheme] = useState(initialTheme);
+	const { theme, setTheme } = useTheme();
 
 	function handleToggleTheme() {
-		const newTheme = theme === 'theme-light' ? 'theme-dark' : 'theme-light';
+		const newTheme = theme === 'light' ? 'dark' : 'light';
 		setTheme(newTheme);
-
-		Cookie.set(COLOR_THEME_COOKIE_NAME, newTheme, {
-			expires: 1000,
-		});
 	}
 
 	useEffect(() => {
@@ -38,6 +31,14 @@ export const Navbar = ({ initialTheme }: NavbarProps) => {
 
 		return () => window.removeEventListener('scroll', scrollHandler);
 	}, [isTop]);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) {
+		return null;
+	}
 
 	return (
 		<header
@@ -89,9 +90,9 @@ export const Navbar = ({ initialTheme }: NavbarProps) => {
 						type='button'
 						aria-label='Theme Toggle'
 					>
-						<SVGProvider name={theme === 'theme-light' ? 'sun' : 'moon'} />
+						<SVGProvider name={theme === 'light' ? 'sun' : 'moon'} />
 						<span className='hidden lg:inline ml-2'>{`${
-							theme === 'theme-light' ? 'Light' : 'Dark'
+							theme === 'light' ? 'Light' : 'Dark'
 						} Mode`}</span>
 					</button>
 				</div>
