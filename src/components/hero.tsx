@@ -1,5 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { TypewriterEffect } from './typewriter-effect';
+
+const MY_TITLES = [
+	{ text: 'Developer,' },
+	{ text: 'Designer,' },
+	{ text: 'Blogger' },
+];
 
 const Hero = () => (
 	<div className='relative'>
@@ -39,9 +46,10 @@ const Hero = () => (
 		</div>
 		<section className='relative container mx-auto pt-20 md:pt-24 lg:pt-40 lg:min-h-screen lg:flex lg:space-x-40'>
 			<div className='sm:text-center lg:text-left'>
-				<h3 className='text-base sm:text-xl md:text-2xl font-light capitalize tracking-widest text-text-offset'>
-					Designer, developer, blogger
-				</h3>
+				<TypewriterEffect
+					words={MY_TITLES}
+					className='text-base sm:text-xl md:text-2xl lg:text-2xl font-light tracking-widest text-text-offset text-left sm:text-center lg:text-left'
+				/>
 				<h1 className='mt-3 sm:mt-6 text-3xl tracking-tight leading-10 font-extrabold text-text sm:text-5xl sm:leading-none md:text-6xl whitespace-pre-line'>
 					I transform good ideas{`\n`} into{' '}
 					<span className='text-primary'>great products.</span>
@@ -56,10 +64,12 @@ const Hero = () => (
 					/>
 				</div>
 				<p className='mt-6 text-base text-text-offset sm:mt-5 sm:text-lg sm:max-w-2xl sm:mx-auto md:text-xl lg:mx-0'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-					deserunt illo in eius obcaecati pariatur nisi ipsa non exercitationem!
-					Molestiae id dignissimos eligendi repellendus sed deleniti consequatur
-					sequi itaque reprehenderit?
+					Hey there! I&apos;m Sibasish Mohanty, a front-end developer based in
+					Mumbai, India. I absolutely love turning ideas into beautiful,
+					user-friendly solutions that people enjoy using. When I&apos;m not
+					busy coding or designing, you&apos;ll find me blogging about the
+					latest tech trends or sharing my experiences at community events. Dive
+					in and explore my work—let&apos;s create something amazing together!
 				</p>
 				<div className='mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start'>
 					<div>

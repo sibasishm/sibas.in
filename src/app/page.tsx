@@ -18,7 +18,7 @@ async function Home() {
 						<span className='text-primary'>blog and news.</span>
 					</>
 				}
-				subtitle='Articles'
+				subtitle='Writings'
 			>
 				<ol className='divide-y divide-border'>
 					{blogPosts.map(({ slug, ...delegated }) => (
