@@ -1,0 +1,111 @@
+---
+title: 'The art of conducting a perfect technical interview'
+description:
+  The shortcomings of a "traditional" technical interview and how to avoid them
+image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+publishedOn: '2024-05-27'
+updatedOn: '2024-05-27'
+isPublished: false
+tags:
+  - career
+  - interview
+---
+
+Working with a growing organization means conducting a lot of interviews. In
+fact, I once had to conduct 34 interviews in 10 weeks before we filled a
+position. Yes, I kept count, and it felt like even more.
+
+Most of the first-round interviews, at least for India-based companies, involve
+standard theoretical questions designed to assess the candidate's knowledge of
+the subject matter. Some interviewers ask candidates to predict the output of a
+program written in a document, others expect exact textbook definitions of
+terms, and some pose confusing trivia questions.
+
+However, I focused on pair programming, using boilerplate code prepared in
+CodeSandbox. Everyone I interviewed considered themselves a senior engineer, had
+spoken to our recruiter, and received initial approval from the hiring manager.
+
+## Filtering the Candidates
+
+I've noticed two types of candidates who often struggle with coding tasks: the
+very junior and the very senior.
+
+Juniors struggle because they lack practical experience. They might understand
+concepts academically but don't yet have the hands-on experience to apply them
+effectively.
+
+Seniors, on the other hand, often spend less time coding as they progress in
+their careers. Their days are filled with meetings, design documents, knowledge
+sharing, code archaeology, and mentoring. As a result, their coding skills can
+become rusty.
+
+After the coding task, we discuss curveballs and delve into areas for
+improvement. This is the fun part. Many would just present an ideal solution
+that even they know they can't implement but since we are running out of the
+time we would just agree to a solution that is not ideal.
+
+Many engineers get stuck because their initial solution is theoretically
+optimal. But algorithm complexity isn't everything.
+
+You can improve how it works in practice.
+
+One day, I hope to find an engineer who says, "Hey, there's a limited number of
+English words. Why worry about memory performance while counting the number of
+vowels in a string?"
+
+That's the corner-cutting mentality you want in a startup engineer—someone who
+understands real-world constraints and makes the code easier to build. 😉
+
+## The Art of Pair Programming
+
+There are two rules I almost always follow:
+
+1. **Understand the instructions** If you don't know what the interviewer is
+   asking you to do, ask them.
+2. **Use Google for the rest** If you don't remember how to do something, Google
+   it.
+
+The pair-programming approach reveals a lot about a candidate's understanding of
+the subject matter. The problem statements don't have to be overly complex.
+Recently, I've been asking candidates to either build a simple stopwatch,
+integrate a given API to render a list, or create a simple contact form.
+
+Almost everyone solves the problem, but the process can be tricky.
+
+If you read the requirements carefully and ask clarifying questions, you can
+build it in 30 minutes. This leaves plenty of time to discuss optimizations,
+explore better solutions, debate component design, and even interview the
+interviewer.
+
+If you don't clarify the requirements, you might take a wrong turn or make a bad
+decision, which can extend the build time to 50 minutes.
+
+Candidates often run out of time when they build step-by-step without a clear
+plan for the end goal. You need to have a plan.
+
+## Skip the Non-Essential Details
+
+> Solve the problem. That fancy little trick doesn't matter unless your solution
+> works.
+
+Engineers often focus on non-essential details. I have had interviews where
+candidates start creating the "ideal" folder structure before writing the
+counter component in Raect.
+
+Sure, the code might be ugly, and you might not fully understand how it works.
+But if it works, has a name, and is self-contained, leave it alone.
+
+You do not have time to refactor everything in an interview. You won't have time
+to refactor our 600,000+ line codebase in your job either. Trust me, I wish I
+could.
+
+This is my favorite signal to look for in a senior engineer. Will you look at a
+working, non-leaky abstraction and lean into it, or waste time refining it?
+
+Many engineers lose time on minor details, little design tweaks, and tiny
+refactorings, then realize too late: "Oh no, I didn't read the whole story!
+There's more work than I thought!"
+
+By then, it's too late.
+
+## Too many enginners can't build
