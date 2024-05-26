@@ -14,7 +14,7 @@ async function Home() {
 			<Section
 				title={
 					<>
-						What&apos; new?{`\n`} My{' '}
+						What&apos;s new?{`\n`} My{' '}
 						<span className='text-primary'>blog and news.</span>
 					</>
 				}

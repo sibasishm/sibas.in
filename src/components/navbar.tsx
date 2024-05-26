@@ -8,7 +8,6 @@ import { LINKS } from '@/constants/links';
 
 import { Logo } from '@/components/logo';
 import SVGProvider from '@/components/svg-provider';
-import { COLOR_THEME_COOKIE_NAME } from '@/constants/theme';
 
 export const Navbar = () => {
 	const [mounted, setMounted] = useState(false);
