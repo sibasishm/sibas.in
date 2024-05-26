@@ -1,5 +1,10 @@
 import type { Metadata } from 'next';
 import { Work_Sans } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
+
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
+
 import './globals.css';
 
 const sansFont = Work_Sans({
@@ -20,8 +25,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<body className={sansFont.variable}>{children}</body>
+		<html lang='en' className={sansFont.variable} suppressHydrationWarning>
+			<body className='relative antialiased font-sans text-text bg-background min-h-screen'>
+				<ThemeProvider>
+					<Navbar />
+					{children}
+					<Footer />
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }
