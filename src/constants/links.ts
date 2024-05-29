@@ -1,11 +1,11 @@
 export const LINKS = [
-	{
-		name: 'Works',
-		href: '/works',
-	},
+	// {
+	// 	name: 'Works',
+	// 	href: '/works',
+	// },
 	{
 		name: 'Blog',
-		href: '/blog',
+		href: '/blogs',
 	},
 	{
 		name: 'About',

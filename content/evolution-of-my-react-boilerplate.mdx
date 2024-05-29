@@ -1,0 +1,187 @@
+---
+title: 'Evolution of my React boilerplate'
+description:
+  The tools I use to build my React applications and how have the choices
+  evolved since I started
+image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+publishedOn: '2024-05-30'
+updatedOn: '2024-05-30'
+isPublished: false
+tags:
+  - react
+  - frontend
+  - technology
+---
+
+I started building web applications in my first job using HTML, CSS (Bootstrap),
+and JQuery. That's it! It was back in 2018. I was a part of the team that used
+to build financial and event dashboards for our clients.
+
+It had all possible web components like chartss, tables, maps, and carousels. We
+used a lot of third party libraries like Chart.js, jQuery, and Bootstrap. The
+code was very modular and easy to maintain. But the biggest problem was
+_duplciation_. We had to copy and paste the same code in multiple places.
+
+We sensed a component based architecture was needed. We started to build a
+component library. The team was familiar with Angular and React. But we went
+ahead with React because of the one way data flow and component composition
+patterns.
+
+## The OG Boilerplate
+
+I didn't have any say in the choice of the libraries used in the boilerplate as
+I was new to React. I call this OG boilerplate, as this is still more or less
+the standard boilerplate in many big corporate react applications.
+
+1. Bootstrapped using
+   [Create React App](https://github.com/facebook/create-react-app)
+2. Routing enabled by
+   [React Router](https://github.com/ReactTraining/react-router) v5
+3. Styling and Components base using:
+   - [Material UI](https://github.com/mui-org/material-ui)
+   - [Styled Components](https://github.com/styled-components/styled-components)
+4. State management using [Redux](https://github.com/reduxjs/redux)
+5. Testing using [Jest](https://github.com/facebook/jest) and
+   [Enzyme](https://github.com/airbnb/enzyme)
+6. Bundling using [Webpack](https://github.com/webpack/webpack)
+
+I later added linting using [ESLint](https://github.com/eslint/eslint) and
+[Prettier](https://github.com/prettier/prettier)to the mix. We didn't use
+TypeScript but we had [PropTypes](https://github.com/facebook/prop-types) for
+type checking.
+
+## The Most Used Boilerplate
+
+As I was learning React at job, I started building many side projects by
+following many online tutorials, and the thing about me is I like to play around
+with tech stack choices as I follow along a tutorial. Hence I decided to build a
+boilerplate that I could use to build my own projects. I also wanted to have a
+boilerplate that was easy to maintain and extend.
+
+This was back in early 2020, hence mostly resembles the OG boilerplate. But the
+noticable deviation was the use of
+[React Hooks](https://reactjs.org/docs/hooks-intro.html) and
+[TypeScript](https://www.typescriptlang.org/) in the project. My state
+management approach was overhauled to separate out server cache and application
+state thanks to my one of the all time favourite articles on the subject
+[Application State Management with React](https://kentcdodds.com/blog/application-state-management-with-react)
+by none other than [Kent C. Dodds](https://twitter.com/kentcdodds).
+
+1. Bootstrapped using
+   [Create React App](https://github.com/facebook/create-react-app)
+2. Routing enabled by
+   [React Router](https://github.com/ReactTraining/react-router) v6
+3. Styling and Components base using:
+   - [Chakra UI](https://github.com/chakra-ui/chakra-ui)
+   - [Emotion](https://github.com/emotion-js/emotion)
+4. State management using [React Query](https://react-query.tanstack.com/)
+5. Testing using [Jest](https://github.com/facebook/jest) and
+   [Testing Library](https://testing-library.com/)
+
+I must mention that I am one of the early adopters of
+[Tailwind CSS](https://tailwindcss.com/) inspired by the article of
+[CSS Utility Classes and "Separation of Concerns"](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+by Adam Wathan. However it still didn't make it into the boilerplate as it was
+go to choice for buidling quick websites but I was dependent on component
+libraries for getting the job done.
+
+## The Transition Boilerplate
+
+In 2021, I decided to take a step back and re-evaluate the boilerplate. This is
+when I was assigned to build the design system for my company. Headless
+component libraries like [Reach UI](https://reach.tech/) and
+[Radix UI](https://www.radix-ui.com/) were gaining traction.
+
+I was extensively using [Next.js](https://nextjs.org/) v9 for my personal
+projects, and was a big fan of the file based routing. This was also the time I
+overhauled the OG stack to start using the more modern approach to building
+React applications and started leveraging Server Side Rendering (SSR) and Static
+Site Generation (SSG) made popular by Next.js.
+
+1. Bootstrapped using [Create Next App](https://nextjs.org/docs/getting-started)
+2. Routing enabled by [Next.js](https://nextjs.org/docs/routing/introduction)
+3. Styling and Components base using [Tailwind CSS](https://tailwindcss.com/)
+
+- In house components build on top of [Reach UI](https://reach.tech/)
+- and [Radix UI](https://www.radix-ui.com/)
+
+4. State management using [React Query](https://react-query.tanstack.com/)
+5. Testing using [Jest](https://jestjs.io/) and
+   [Testing Library](https://testing-library.com/) and
+   [Cypress](https://www.cypress.io/) for end to end testing
+
+## The Ultimate Boilerplate
+
+I have changed two jobs in the last three years. Worked in a react native
+project, went back to using Redux (made easier by
+[Redux Toolkit](https://redux-toolkit.js.org/)).
+
+Meantime, React has finally moved the
+[new documentation site](https://react.dev/learn/start-a-new-react-project) out
+from beta which saw a slow death of
+[Create React App](https://create-react-app.dev/) and
+[Next.js](https://nextjs.org/) is now the _official_ choice to scaffold a
+production-grade React application.
+
+I have tried [Gatsby](https://www.gatsbyjs.com/) but found it to be a bit too
+opinionated and not the right fit for my needs. I got my hands on
+[Remix](https://remix.run/) as soon they went open source and I was hooked by
+their _right_ approach to building web applications. I infacted advocated to use
+it in my job but it didn't turn out well due to the steep learning curve and the
+lack of community support. The new developers in the team were not familiar with
+some of the opiniated approach of Remix.
+
+This made me realise there is no perfect boilerplate and I have to pick the
+right tools for the job keeping in mind the team and maintainability. Avoid
+revamping the boilerplate as soon there is a new hot react meta framework out
+there. However if I have to make a choice now, I will go with:
+
+1. Bootstrapped using:
+
+- [Create Next App](https://nextjs.org/docs/getting-started) if my team is
+  familiar with Next.js
+- [Vite](https://vitejs.dev/) if my team is not familiar with any meta framework
+- [Remix](https://remix.run/) for personal projects and a team that is familiar
+  with the web platform
+
+2. Routing enabled by
+
+- [Next.js](https://nextjs.org/docs/routing/introduction) for Next.js apps
+- [Remix](https://remix.run/) for remix apps
+- [TanStack Router](https://tanstack.com/router/latest) for vite apps
+
+3. Styling and Components base using:
+
+- [Tailwind CSS](https://tailwindcss.com/) my absolute favourite
+- [Shadcn UI](https://shadcn.com/ui) the hottest UI library right now
+- [Radix UI](https://www.radix-ui.com/) for accessibile base components
+
+4. State management using
+
+- [React Query](https://react-query.tanstack.com/) the undisputed king of state
+  management
+- [Jotai](https://jotai.org/) coupled with Context Providers for application
+  states
+
+5. Testing using
+
+- [Vitest](https://vitest.dev/) and
+  [Testing Library](https://testing-library.com/) for unit, and integration
+  testing
+- [Playwright](https://playwright.dev/) for end to end testing
+- [MSW](https://mswjs.io/) for mocking API calls
+
+6. Form management using
+
+- [React Hook Form](https://react-hook-form.com/) for form utilities
+- [Zod](https://github.com/colinhacks/zod) for schema validation
+
+7. Misc:
+
+- [TypeScript](https://www.typescriptlang.org/) for type checking
+- [ESLint](https://eslint.org/) for linting
+- [Prettier](https://prettier.io/) for code formatting
+- [ky](https://github.com/sindresorhus/ky) for making API calls
+- [date-fns](https://date-fns.org/) for date manipulation
+- [Storybook](https://storybook.js.org/) for component documentation
+- [Vercel](https://vercel.com/) for deployment

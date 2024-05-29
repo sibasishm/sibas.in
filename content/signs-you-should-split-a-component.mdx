@@ -1,0 +1,56 @@
+---
+title: 'Signs you should split a component'
+description:
+  When you should split a React component into smaller components, and how to
+  avoid hasty abstractions that can lead to spaghetti code
+image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+publishedOn: '2024-05-30'
+updatedOn: '2024-05-30'
+isPublished: false
+tags:
+  - react
+  - frontend
+  - technology
+---
+
+React applications are built from isolated pieces of UI called components. A
+React component is a JavaScript function that you can sprinkle with markup.
+Components can be as small as a button, or as large as an entire page.
+
+I have seen many React developers who have a hard time splitting a component
+into smaller components. They tend to build a component that is too big, and
+then refactor it later. While some tend to follow some made-up rule of thumb
+like "Three props is fine. Five props is a code smell. More than seven props is
+a disaster." or my personal favourite "If you have more than 200 lines of code,
+you probably need to refactor." or my personal favorite."
+
+In the process, we often end up with wrong abstractions that are _harder_ to
+understand and maintain.
+
+## AHA Programming
+
+Like all novice programmers, I was hard wired to the
+[DRY (an acronym for "Don't Repeat Yourself")](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+principle. This is generally a good practice and prevents us from fixing a bug
+in multiple places. But in the process of avoiding duplication at any cost, we
+need of with what [Sandi Metz](https://twitter.com/sandimetz) calls the
+[The Wrong Abstraction](https://www.sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
+problem.
+
+I was introduced to this concept by
+[Kent C. Dodds](https://twitter.com/kentcdodds) in his talk
+[AHA Programming](https://youtu.be/wuVy7rwkCfc?si=EC8oQKi_eicJ66or). The biggest
+takeaway from this talk is that you shouldn't be dogmatic about when you start
+writing abstractions but instead write the abstraction when it feels right and
+don't be afraid to duplicate code until you get there.
+
+## The Signs You Should Split a Component
+
+Now that you are clear on _not_ to split a component too early, let's look at
+the signs you should actually split a component:
+
+- The props are complicated and confusing
+- Different prop combinations are needed for different use cases
+- There are too many _optional_ props
+- The prop combinations are _illogical_
+- The component is expensive to render

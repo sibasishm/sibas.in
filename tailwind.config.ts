@@ -40,6 +40,7 @@ const config: Config = {
 			sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
 		},
 		colors: {
+			transparent: 'transparent',
 			background: 'var(--color-background)',
 			'background-offset': 'var(--color-background-offset)',
 			text: 'var(--color-text)',
@@ -48,7 +49,16 @@ const config: Config = {
 			primary: 'var(--color-primary)',
 			'primary-offset': 'var(--color-primary-offset)',
 		},
+		animation: {
+			roll: 'roll 24s linear infinite',
+		},
+		keyframes: {
+			roll: {
+				'0%': { transform: 'translateX(100%)' },
+				'100%': { transform: 'translateX(-100%)' },
+			},
+		},
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
 export default config;
