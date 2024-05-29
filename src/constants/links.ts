@@ -5,7 +5,7 @@ export const LINKS = [
 	// },
 	{
 		name: 'Blog',
-		href: '/blog',
+		href: '/blogs',
 	},
 	{
 		name: 'About',

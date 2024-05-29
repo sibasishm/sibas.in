@@ -40,6 +40,7 @@ const config: Config = {
 			sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
 		},
 		colors: {
+			transparent: 'transparent',
 			background: 'var(--color-background)',
 			'background-offset': 'var(--color-background-offset)',
 			text: 'var(--color-text)',
@@ -58,6 +59,6 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
 export default config;
