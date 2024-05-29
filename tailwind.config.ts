@@ -48,6 +48,15 @@ const config: Config = {
 			primary: 'var(--color-primary)',
 			'primary-offset': 'var(--color-primary-offset)',
 		},
+		animation: {
+			roll: 'roll 24s linear infinite',
+		},
+		keyframes: {
+			roll: {
+				'0%': { transform: 'translateX(100%)' },
+				'100%': { transform: 'translateX(-100%)' },
+			},
+		},
 	},
 	plugins: [require('@tailwindcss/typography')],
 };
