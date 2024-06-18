@@ -1,8 +1,9 @@
 const SkillList = [
+	'react',
+	'typeScript',
 	'next.js',
-	'tailwind css',
+	'tailwind cSS',
 	'figma',
-	'javaScript',
 	'web design',
 	'Gatsby.js',
 	'strapi',
