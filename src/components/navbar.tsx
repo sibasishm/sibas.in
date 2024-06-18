@@ -12,7 +12,6 @@ import SVGProvider from '@/components/svg-provider';
 export const Navbar = () => {
 	const [mounted, setMounted] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [isTop, setIsTop] = useState(true);
 
 	const { theme, setTheme } = useTheme();
 
@@ -20,16 +19,6 @@ export const Navbar = () => {
 		const newTheme = theme === 'light' ? 'dark' : 'light';
 		setTheme(newTheme);
 	}
-
-	useEffect(() => {
-		const scrollHandler = () => {
-			setIsTop(window.scrollY < window.innerHeight);
-		};
-
-		window.addEventListener('scroll', scrollHandler);
-
-		return () => window.removeEventListener('scroll', scrollHandler);
-	}, [isTop]);
 
 	useEffect(() => {
 		setMounted(true);
@@ -40,11 +29,7 @@ export const Navbar = () => {
 	}
 
 	return (
-		<header
-			className={`fixed w-full z-10 bg-background transition duration-150 ease-in-out ${
-				!isTop && 'bg-background-offset blur shadow-lg'
-			}`}
-		>
+		<header className='fixed w-full z-10 bg-background'>
 			<div className='container'>
 				<div className='relative flex justify-between items-center h-16 md:h-20'>
 					<div className='absolute inset-y-0 left-0 flex items-center md:hidden'>
@@ -73,11 +58,7 @@ export const Navbar = () => {
 						</div>
 						<nav className='hidden md:flex md:ml-4'>
 							{LINKS.map(({ name, href }) => (
-								<Link
-									key={name}
-									href={href}
-									className='ml-4 px-3 py-2 rounded-md font-medium leading-5 text-text-offset hover:text-text hover:bg-background focus:outline-none focus:text-text focus:bg-background transition duration-150 ease-in-out'
-								>
+								<Link key={name} href={href} className='ml-4 px-3 py-2 link'>
 									{name}
 								</Link>
 							))}
@@ -102,7 +83,7 @@ export const Navbar = () => {
 						<Link
 							key={name}
 							href={href}
-							className='block mt-1 px-3 py-2 rounded-md font-medium leading-5 text-text-offset hover:text-text hover:bg-background focus:outline-none focus:text-text focus:bg-background transition duration-150 ease-in-out'
+							className='mt-1 px-3 py-2 rounded-md font-medium leading-5 text-text-offset hover:text-text hover:bg-background focus:outline-none focus:text-text focus:bg-background transition duration-150 ease-in-out'
 						>
 							{name}
 						</Link>

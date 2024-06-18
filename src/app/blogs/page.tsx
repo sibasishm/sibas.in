@@ -6,7 +6,7 @@ async function Blogs() {
 
 	return (
 		<main className='container'>
-			<section className='space-y-2 md:space-y-5 mt-4 p-6 pb-8 pt-16 md:pt-20 lg:pt-28'>
+			<section className='space-y-2 md:space-y-5 p-6 pb-8 pt-16 md:pt-20 lg:pt-28'>
 				<h1 className='font-extrabold tracking-tight text-4xl sm:leading-10 md:text-6xl md:leading-14'>
 					Latest articles
 				</h1>
