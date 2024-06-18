@@ -65,11 +65,11 @@ const Hero = () => (
 				</div>
 				<p className='mt-6 text-base text-text-offset sm:mt-5 sm:text-lg sm:max-w-2xl sm:mx-auto md:text-xl lg:mx-0'>
 					Hey there! I&apos;m Sibasish Mohanty, a front-end developer based in
-					Mumbai, India. I absolutely love turning ideas into beautiful,
-					user-friendly solutions that people enjoy using. When I&apos;m not
-					busy coding or designing, you&apos;ll find me blogging about the
-					latest tech trends or sharing my experiences at community events. Dive
-					in and explore my work—let&apos;s create something amazing together!
+					Mumbai, India. I&apos;m all about turning cool ideas into beautiful,
+					user-friendly websites and apps. When I&apos;m not busy coding up a
+					storm, you&apos;ll find me blogging about the latest tech trends or
+					geeking out over the newest JavaScript frameworks. Dive in and check
+					out my work—let&apos;s make something awesome together!
 				</p>
 				<div className='mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start'>
 					<div>
