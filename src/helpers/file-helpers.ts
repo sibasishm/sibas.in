@@ -25,11 +25,6 @@ export async function getBlogPostList() {
 
 		const { data: frontmatter }: { data: any } = matter(rawContent);
 
-		console.log(
-			'Invoked all blog posts from: ' +
-				path.join(process.cwd(), `/content/${fileName}`)
-		);
-
 		blogPosts.push({
 			slug: fileName.replace('.mdx', ''),
 			...frontmatter,
