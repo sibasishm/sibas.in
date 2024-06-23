@@ -10,7 +10,6 @@ type BlogCardProps = {
 };
 
 const BlogCard = ({ link, publishedOn, title, description }: BlogCardProps) => {
-	console.log('HERE', link);
 	return (
 		<article className='space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0'>
 			<dl>

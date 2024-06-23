@@ -1,0 +1,148 @@
+---
+title: 'TypeScript Unions: A Guide to Type Guards and Advanced Types'
+description:
+  Unlock the full potential of TypeScript unions with our fun and engaging
+  guide! Discover how to navigate the challenges of union types, leverage type
+  guards, and master advanced concepts like Only and Either. Write robust and
+  flexible code that adapts to dynamic type scenarios effortlessly.
+image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+publishedOn: '2024-06-24'
+updatedOn: '2024-06-24'
+isPublished: false
+tags:
+  - typescript
+  - tutorial
+  - technology
+---
+
+TypeScript unions let us create types that can hold values from different
+specified types. However, working with union types can feel like juggling --
+fun, but challenging. Let's explore some of these challenges and how we can turn
+them into opportunities to write cleaner and safer code.
+
+### Challenges and Limitations of Union Types
+
+1. Type Safety Across Unions: TypeScript ensures operations are valid for every
+   member of a union. This means you can't directly use properties or methods
+   specific to only some types in the union without doing some detective work
+   first.
+
+2. Compile-time Known Types: Union types are based on types known at compile
+   time. This can feel a bit restrictive in scenarios where types might change
+   dynamically at runtime.
+
+### Type Guards: Your Safety Net
+
+Type guards are like your safety net, ensuring you don't fall flat when working
+with unions:
+
+```typescript
+type UserId = string | number;
+
+function formatId(id: UserId): string {
+	if (typeof id === 'string') {
+		return id.toUpperCase();
+	}
+	return id.toString();
+}
+```
+
+In this example, `typeof` acts as a type guard, helping TypeScript narrow down
+the union type based on runtime checks. This way, TypeScript can figure out the
+correct type within the function block.
+
+### Conditional Types: The Shape-Shifters
+
+When dealing with dynamically determined types, conditional types are like
+shape-shifters, adapting to the situation:
+
+```typescript
+interface Cat {
+	name: string;
+	age: number;
+	color: string;
+}
+
+interface Dog {
+	name: string;
+	age: number;
+	breed: string;
+}
+
+type Animal = Cat | Dog;
+
+const animals: Animal[] = [
+	{
+		name: 'Fluffy',
+		age: 2,
+		color: 'white',
+	},
+	{
+		name: 'Fido',
+		age: 3,
+		breed: 'Labrador',
+	},
+];
+
+animals.map(animal => {
+	if ('breed' in animal) {
+		// TypeScript knows `animal` is a Dog here
+		return animal.breed;
+	} else {
+		// TypeScript knows `animal` is a Cat here
+		return animal.color;
+	}
+});
+```
+
+Here, the `in` operator acts as a type guard within the `map()` function,
+allowing TypeScript to infer whether `animal` is a `Cat` or a `Dog` based on the
+presence of the `breed` property. This ensures type-specific operations without
+any runtime mishaps.
+
+### Advanced Union Types: `Only` and `Either`
+
+When you need to create types dynamically, TypeScript offers `Only` and `Either`
+concepts. Think of them as your trusty sidekicks for handling complex type
+scenarios.
+
+#### `Only` Type: The Specialist
+
+The `Only` type allows you to create a new type that retains only specific
+properties from existing types while omitting others:
+
+```typescript
+type Only<T, U> = { [P in keyof T]: T[P] } & Omit<
+	{ [P in keyof U]?: never },
+	keyof T
+>;
+
+type CatOnly = Only<Cat, Dog>; // Results in { name: string; age: number; color: string; }
+type DogOnly = Only<Dog, Cat>; // Results in { name: string; age: number; breed: string; }
+```
+
+In these examples, `Only` creates `CatOnly` and `DogOnly` types by focusing on
+the properties unique to `Cat` and `Dog`, respectively.
+
+#### `Either` Type: The Unifier
+
+The `Either` type combines two types into a union where each property is present
+in at least one of the original types:
+
+```typescript
+type Either<T, U> = Only<T, U> | Only<U, T>;
+
+type Animal = Either<Cat, Dog>;
+```
+
+With `Either`, `Animal` becomes a union type that includes all properties from
+both `Cat` and `Dog`, ensuring type safety across various scenarios where either
+type might be valid.
+
+### Conclusion
+
+Union types and their advanced concepts like type guards, `Only`, and `Either`
+are essential for handling varied data structures and ensuring type safety in
+TypeScript applications. By leveraging these features, developers can write
+robust and flexible code that adapts to dynamic type scenarios. So, go ahead,
+embrace the power of TypeScript unions, and code with confidence!
