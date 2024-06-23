@@ -10,7 +10,6 @@ type BlogCardProps = {
 };
 
 const BlogCard = ({ link, publishedOn, title, description }: BlogCardProps) => {
-	console.log('HERE', link);
 	return (
 		<article className='space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0'>
 			<dl>
@@ -24,7 +23,7 @@ const BlogCard = ({ link, publishedOn, title, description }: BlogCardProps) => {
 					<Link
 						href='/blogs/[link]'
 						as={`/blogs/${link}`}
-						className='hover:text-primary'
+						className='text-text hover:text-primary'
 					>
 						{title}
 					</Link>
