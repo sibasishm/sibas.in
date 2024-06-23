@@ -23,7 +23,7 @@ const BlogCard = ({ link, publishedOn, title, description }: BlogCardProps) => {
 					<Link
 						href='/blogs/[link]'
 						as={`/blogs/${link}`}
-						className='hover:text-primary'
+						className='text-text hover:text-primary'
 					>
 						{title}
 					</Link>
