@@ -1,0 +1,164 @@
+---
+title: 'Web Security 101 for Frontend Developers'
+description:
+  "Web security might not be the first thing on your mind when you're flexing
+  your frontend skills, but it's the silent guardian keeping your app from
+  falling into the wrong hands. From defending against sneaky XSS attacks to
+  locking down your app with HTTPS, understanding the basics of web security is
+  like having a superpower in your developer toolkit"
+image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+publishedOn: '2024-08-24'
+updatedOn: '2024-08-24'
+isPublished: true
+tags:
+  - frontend
+  - security
+  - internet
+---
+
+Alright, frontend wizards, let's talk about something that doesn't get enough
+love: web security. You know, that thing that keeps your shiny web applications
+from turning into a hacker's playground. It's easy to get lost in the joys of
+CSS animations and JavaScript magic, but if you're not paying attention to
+security, you might as well leave your front door wide open with a "Welcome,
+Hackers!" sign.
+
+### Why Web Security Should Be Your New Best Friend
+
+Web security isn't just a box to tick off on your to-do list—it's the bouncer at
+your app's front door. Without it, you're leaving your users' data vulnerable to
+all kinds of shady characters. Imagine your app as a fortress, and security
+measures are the walls, moats, and dragons (yes, dragons) that protect it. By
+shoring up your defenses, you're not just saving yourself a headache; you're
+also showing your users that you've got their backs.
+
+### Common Web Security Threats
+
+Let's meet the villains who are always trying to crash your app's party.
+
+1. **Cross-Site Scripting (XSS)**: Think of XSS as a sneaky spy who slips
+   malicious code into your web app, turning your users' browsers into unwitting
+   accomplices. They can steal login info, personal data, and generally cause a
+   bad time.
+
+2. **Cross-Site Request Forgery (CSRF)**: CSRF is like a master of disguise who
+   tricks users into doing things they didn't mean to—like handing over the keys
+   to their accounts. Not cool.
+
+3. **SQL Injection**: Ever had someone put words in your mouth? SQL Injection is
+   the database equivalent, where an attacker forces your database to say things
+   it shouldn't, like spitting out all your users' data.
+
+4. **Clickjacking**: Imagine thinking you're clicking a harmless button, but
+   you're actually triggering something completely different—like dropping your
+   phone in the toilet. That's clickjacking. It's misleading, and it stinks.
+
+5. **Session Hijacking**: This is when someone swipes a user's session cookie
+   and pretends to be them, like stealing someone's identity to get into a VIP
+   club. The result? They're running amok in your app.
+
+### Web Security Concepts You Should Know
+
+As a frontend developer, you've probably heard of these terms before, but let's
+dive into what they actually mean—no magic wands required.
+
+1. CORS:
+   [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+   is a mechanism that allows a web application to access resources from another
+   domain. It ensures that the resources are not blocked by the browser's
+   same-origin policy. Think of it like giving someone a spare key to your
+   house, but only for certain rooms. It lets your web app fetch resources from
+   other domains without opening the floodgates.
+
+2. HTTPS: [HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS) is a
+   protocol that encrypts data transmitted between a web browser and a web
+   server. If HTTP is a letter in the mail, HTTPS is the letter in a secure,
+   tamper-proof envelope. It encrypts data between the browser and server,
+   making sure no one reads your private messages.
+
+3. CSP:
+   [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+   is a mechanism that allows web developers to define which resources a web
+   application can access and how they can be used. It is your app's way of
+   saying, "I only trust these sources," when it comes to loading scripts,
+   images, and other resources. It's like telling your bouncer to only let in
+   guests from a pre-approved list.
+
+4. OWASP Security Risks: [OWASP](https://github.com/0xRadi/OWASP-Web-Checklist)
+   is a leading organization that provides information and resources on web
+   security. Its OWASP Top 10 is a list of the most critical web security risks
+   that developers need to be aware of. It includes information on how to
+   mitigate these risks and how to prevent them.
+
+5. Security Headers:
+   [Security headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
+   are like additional layers of armor for your web application. They help
+   protect against various attacks by instructing the browser on how to behave.
+   Some important ones include:
+   - X-Content-Type-Options: Prevents the browser from interpreting files as a
+     different MIME type, which can prevent certain types of attacks.
+   - X-Frame-Options: Protects against clickjacking by controlling whether your
+     content can be embedded in frames.
+   - Strict-Transport-Security (HSTS): Forces browsers to only connect to your
+     server over HTTPS, which helps prevent man-in-the-middle attacks.
+
+### Preventing Web Security Threats
+
+Now that you know who the baddies are, here's how to keep them from crashing
+your app:
+
+1. **Input Validation:** Don't just take what users give you—make sure it's
+   legit. Validate inputs to keep out the riffraff (aka malicious code).
+
+2. **Authentication and Authorization:** This is your app's version of a guest
+   list. Only let in people who have the right invite, and make sure they only
+   go where they're allowed.
+
+3. **Secure Communication:** Always use HTTPS for secure communication between
+   client and server. It's like having a private conversation in a room where no
+   one can eavesdrop.
+
+4. **Secure Storage:** Store sensitive data like it's the crown jewels—encrypt
+   it, lock it up, and throw away the key (not literally, though).
+
+5. **Regular Security Audits:** Think of this as your app's annual check-up.
+   Regular audits help you catch any vulnerabilities before the bad guys do.
+
+When you're building with React, there are a few extra steps you can take to
+make sure your app is as secure as possible.
+
+1. **Avoid Using `dangerouslySetInnerHTML`**: The name says it all — It's like
+   inviting a vampire into your house; once they're in, all bets are off. If you
+   absolutely must use it, make sure to sanitize the data first, or you might
+   just be serving up some XSS on a silver platter.
+
+2. **Escape User Input in JSX**: React's pretty smart — it automatically escapes
+   user input in JSX, helping you dodge XSS attacks. But don't get too comfy;
+   always validate and sanitize any data coming from outside sources before
+   letting it anywhere near your precious components.
+
+3. **Use State and Props Securely**: Your component state and props are like
+   your app's secret diary—don't leave sensitive stuff lying around where just
+   anyone can see it. Avoid storing things like authentication tokens directly
+   in state or props. Instead, use secure storage options like `localStorage`,
+   `sessionStorage`, or cookies (and make sure those cookies are wearing their
+   `HttpOnly` and `Secure` badges).
+
+4. **Implement Proper Error Boundaries**: Errors happen, but don't let them
+   spill the beans. Use error boundaries to catch and handle errors gracefully.
+   This way, your app won't crash and burn—or worse, leak sensitive
+   information—just because something went wrong.
+
+5. **Avoid Client-Side Security Decisions**: Trusting the client to handle
+   security is like letting the fox guard the henhouse. Always enforce
+   security-critical decisions, like authentication or access control, on the
+   server side. Your client-side checks are just the first line of defense.
+
+### Learning Resources
+
+1. [OWASP Cheatsheets](https://cheatsheetseries.owasp.org/cheatsheets/AJAX_Security_Cheat_Sheet.html)
+   -- Because who doesn't love a good cheat sheet?
+2. [Why HTTPS Matters](https://web.dev/articles/why-https-matters) -- Spoiler:
+   It's super important.
+3. [Understanding CORS](https://rbika.com/blog/understanding-cors) -- Learn how
+   to share those resources safely.

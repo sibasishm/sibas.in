@@ -51,7 +51,7 @@ export const Navbar = () => {
 								className='inline-flex items-center p-2 space-x-2 rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out'
 							>
 								<Logo className='h-8 w-8' theme={theme} />
-								<span className='hidden sm:block text-lg font-semibold'>
+								<span className='hidden sm:block text-lg font-semibold text-text'>
 									Sibasish Mohanty
 								</span>
 							</Link>
