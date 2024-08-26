@@ -44,7 +44,7 @@ export const Navbar = () => {
 						</button>
 					</div>
 					<div className='flex-1 flex items-center justify-center md:justify-start'>
-						<div className='flex-shrink-0'>
+						<div className='flex flex-shrink-0 items-center'>
 							<Link
 								href='/'
 								aria-label='Sibasish Mohanty'
@@ -64,30 +64,35 @@ export const Navbar = () => {
 							))}
 						</nav>
 					</div>
-					<button
-						className='inline-flex items-center p-2 rounded-md hover:shadow-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out'
-						onClick={handleToggleTheme}
-						type='button'
-						aria-label='Theme Toggle'
-					>
-						<SVGProvider name={theme === 'light' ? 'sun' : 'moon'} />
-						<span className='hidden lg:inline ml-2'>{`${
-							theme === 'light' ? 'Light' : 'Dark'
-						} Mode`}</span>
-					</button>
+					<div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
+						<button
+							className='inline-flex items-center p-2 rounded-md hover:shadow-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out'
+							onClick={handleToggleTheme}
+							type='button'
+							aria-label='Theme Toggle'
+						>
+							<SVGProvider name={theme === 'light' ? 'sun' : 'moon'} />
+							<span className='hidden lg:inline ml-2'>{`${
+								theme === 'light' ? 'Light' : 'Dark'
+							} Mode`}</span>
+						</button>
+					</div>
 				</div>
 				<nav
 					className={`p-2 pb-3 md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
 				>
-					{LINKS.map(({ name, href }) => (
-						<Link
-							key={name}
-							href={href}
-							className='mt-1 px-3 py-2 rounded-md font-medium leading-5 text-text-offset hover:text-text hover:bg-background focus:outline-none focus:text-text focus:bg-background transition duration-150 ease-in-out'
-						>
-							{name}
-						</Link>
-					))}
+					<ol className='text-center'>
+						{LINKS.map(({ name, href }) => (
+							<li key={name}>
+								<Link
+									href={href}
+									className='block px-3 py-2 rounded-md font-medium leading-5 text-text-offset hover:text-text hover:bg-background focus:outline-none focus:text-text focus:bg-background transition duration-150 ease-in-out'
+								>
+									{name}
+								</Link>
+							</li>
+						))}
+					</ol>
 				</nav>
 			</div>
 		</header>

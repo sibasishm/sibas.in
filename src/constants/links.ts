@@ -4,7 +4,7 @@ export const LINKS = [
 	// 	href: '/works',
 	// },
 	{
-		name: 'Blog',
+		name: 'Writings',
 		href: '/blogs',
 	},
 	{
@@ -14,5 +14,9 @@ export const LINKS = [
 	{
 		name: 'Contact',
 		href: '/contact',
+	},
+	{
+		name: 'Library',
+		href: '/library',
 	},
 ];
