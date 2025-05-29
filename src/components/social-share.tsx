@@ -16,7 +16,7 @@ const SocialShare = ({ title, url }: SocialShareProps) => {
 	};
 
 	return (
-		<div className='flex gap-4 mt-8'>
+		<div className='flex gap-4 mt-8 md:mt-12 md:gap-6 justify-end'>
 			<a
 				href={shareLinks.twitter}
 				target='_blank'
