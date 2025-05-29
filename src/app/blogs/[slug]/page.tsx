@@ -8,6 +8,7 @@ import { COMPONENT_MAP } from '@/helpers/mdx-components';
 
 import BlogHero from '@/components/blog-hero';
 import SocialShare from '@/components/social-share';
+import CoverImage from '@/components/cover-image';
 
 export async function generateMetadata({
 	params,
@@ -87,6 +88,11 @@ async function BlogPost({ params }: { params: { slug: string } }) {
 					publishedOn={frontmatter.publishedOn}
 				/>
 				<section className='container'>
+					<CoverImage
+						src={frontmatter.image}
+						alt={frontmatter.title}
+						attribution={frontmatter.imageAttribution}
+					/>
 					<div className='prose lg:prose-lg xl:prose-xl mx-auto py-12'>
 						<MDXRemote source={content} components={COMPONENT_MAP} />
 						<SocialShare title={frontmatter.title} url={url} />
