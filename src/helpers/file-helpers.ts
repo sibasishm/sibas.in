@@ -12,6 +12,12 @@ type BlogPost = {
 	title: string;
 	description: string;
 	image: string;
+	imageAttribution?: {
+		author: string;
+		authorUrl: string;
+		platform: string;
+		platformUrl: string;
+	};
 	content: string;
 };
 

@@ -3,7 +3,12 @@ title: 'Functions returning JSX vs. Function Components in React'
 description:
   What are the differences between functions returning JSX and function
   components in React? and when to use each.
-image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2'
+imageAttribution:
+  author: 'AltumCode'
+  authorUrl: 'https://unsplash.com/@altumcode'
+  platform: 'Unsplash'
+  platformUrl: 'https://unsplash.com/photos/person-writing-on-computer-laptop-unsplash-2'
 publishedOn: '2025-05-29'
 updatedOn: '2025-05-29'
 isPublished: true
@@ -24,7 +29,7 @@ behind the scenes, you're chopping out React's magic.
 
 In this post, you'll learn:
 
-- How React decides “this is a component” vs. “just a function”
+- How React decides "this is a component" vs. "just a function"
 
 - What you lose when you bypass React's render pipeline
 
@@ -127,8 +132,8 @@ Little change, big difference.
 
 ### Wrapping Up
 
-Next time you're about to type `MyComponent(props)`, pause. Ask yourself: “Do I
-want React's lifecycle, hooks, context, suspense, error boundaries?” If yes—use
+Next time you're about to type `MyComponent(props)`, pause. Ask yourself: "Do I
+want React's lifecycle, hooks, context, suspense, error boundaries?" If yes—use
 `<MyComponent />`. If no, maybe rethink whether you really need a component at
 all.
 

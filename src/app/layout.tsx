@@ -9,9 +9,9 @@ import './globals.css';
 
 const sansFont = Work_Sans({
 	subsets: ['latin'],
-	display: 'fallback',
+	display: 'swap',
 	variable: '--font-sans',
-	weight: 'variable',
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
@@ -25,8 +25,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en' className={sansFont.variable} suppressHydrationWarning>
-			<body className='relative antialiased font-sans text-text bg-background min-h-screen'>
+		<html
+			lang='en'
+			className={`${sansFont.variable} font-sans`}
+			suppressHydrationWarning
+		>
+			<body className='relative antialiased text-text bg-background min-h-screen'>
 				<ThemeProvider>
 					<Navbar />
 					{children}
