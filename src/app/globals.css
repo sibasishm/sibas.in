@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 [data-theme='light'] {
-	--color-background: #fafaf9;
+	--color-background: #f9f9fa;
 	--color-background-offset: #dbeafe;
 	--color-text: #1b2d45;
 	--color-text-offset: #373a3c;

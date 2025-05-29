@@ -1,0 +1,135 @@
+---
+title: 'Functions returning JSX vs. Function Components in React'
+description:
+  What are the differences between functions returning JSX and function
+  components in React? and when to use each.
+image: '../public/blogs/emile-perron-xrVDYZRGdw4-unsplash.jpg'
+publishedOn: '2025-05-29'
+updatedOn: '2025-05-29'
+isPublished: true
+tags:
+  - react
+  - frontend
+  - deep dive
+---
+
+> “A function is just a function. A component is a function that React
+> controls.” I know they look the same, but trust me, React treats them totally
+> differently.
+
+Hey there! If you've ever paired-programmed, code-reviewed, or just stumbled
+through someone else's React code, you've probably seen this little gotcha:
+calling your component like a regular function. It seems innocent, right? But
+behind the scenes, you're chopping out React's magic.
+
+In this post, you'll learn:
+
+- How React decides “this is a component” vs. “just a function”
+
+- What you lose when you bypass React's render pipeline
+
+- Common anti-patterns and their fixes
+
+- Best practices to keep your abstractions React-friendly
+
+### Peek Under the Hood: `React.createElement`
+
+You know JSX is just
+[syntax sugar](https://react.dev/reference/react/createElement). Under it all
+lives `React.createElement`:
+
+```ts
+React.createElement(
+	type, // string tag or your function/class
+	props, // attributes + children
+	...children
+);
+```
+
+That returns a `ReactElement`: a plain object describing what you want. But it's
+React's reconciler that turns that object into real DOM, handles hooks, tracks
+updates… all that good stuff.
+
+So:
+
+- JSX → createElement → ReactElement → \[Reconciler steps] → DOM
+- Manual call → ReactElement → 📴 no reconciler
+
+### Reconciler 101: How React Runs Your Code
+
+Let's start simple. You write:
+
+```js
+function Hello() {
+	return <div>Hello, world!</div>;
+}
+```
+
+Here's what happens when React sees `<Hello />`:
+
+1. **Element Creation**: `createElement` gives React a description.
+2. **Fiber Allocation**: React makes fiber nodes for each element.
+3. **Hook Setup**: React assigns a hook dispatcher so inside your component
+   `useState` actually hooks into those fibers.
+4. **Render Phase**: React invokes your component, builds the tree, then diffs
+   it against the last one.
+5. **Commit Phase**: React updates the DOM, runs effects, etc.
+
+If you `Hello()` yourself, you zip past all those steps. No fiber, no hook
+wiring, no context. You're flying blind.
+
+### That Moment You Realize You Screwed Up…
+
+Ever written an HOC or render-prop utility? Standard pattern:
+
+```js
+function withLogger(Component) {
+	return function Wrapped(props) {
+		console.log('Rendering', Component.name);
+		return Component(props); // ← oops!
+	};
+}
+```
+
+Boom—no hooks, no context. It still returns JSX, but React never saw a
+`<Wrapped />`.
+
+**Quick fix**:
+
+```js
+function withLogger(Component) {
+	return function Wrapped(props) {
+		console.log('Rendering', Component.name);
+		return <Component {...props} />;
+	};
+}
+```
+
+Little change, big difference.
+
+### Pro Tips to Stay in React's Good Books
+
+1. **Name your utils different**: `renderTooltip()` vs `Tooltip`.
+2. **Always use JSX for components**:
+
+   ```js
+   // ✅ Good
+   return <MyComponent foo={bar} />;
+
+   // ❌ Bad
+   return MyComponent({ foo: bar });
+   ```
+
+3. **ESLint to the rescue**: consider a rule blocking direct calls to PascalCase
+   functions.
+4. **Docs are your friend**: clearly label if a function is just a renderer vs a
+   full-blown component.
+
+### Wrapping Up
+
+Next time you're about to type `MyComponent(props)`, pause. Ask yourself: “Do I
+want React's lifecycle, hooks, context, suspense, error boundaries?” If yes—use
+`<MyComponent />`. If no, maybe rethink whether you really need a component at
+all.
+
+Keep it declarative. Let React steer the ship.
